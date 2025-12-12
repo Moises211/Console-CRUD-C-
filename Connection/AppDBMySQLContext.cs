@@ -13,10 +13,12 @@ public class AppDBMySQLContext : DbContext
 {
     // Database connection parameters
     private string Host = "localhost";
-    private string Port = "3307"; // PUERTO ESTÁNDAR DE MYSQL
+    //private string Port = "3307"; // PUERTO ESTÁNDAR DE MYSQL
+    private string Port = "3306";
     private string Database = "dbproducts";//crear base en MySQL
     private string Username = "root";//Reemplazar por usuario local
-    private string Password = "usbw";//Reemplazar por contraseña local
+    //private string Password = "usbw";//Reemplazar por contraseña local
+    private string Password = "";
 
     // Define DbSets for each model
     public DbSet<Users> Users { get; set; }
