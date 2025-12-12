@@ -106,6 +106,7 @@ public class UserService : IUserSevice
 
                 //  Call SaveChanges. EF Core detects the change and executes the UPDATE.
                 context.SaveChanges();
+                Console.WriteLine("Users Updated!");
                 return true;
             }
             return false;
@@ -124,8 +125,9 @@ public class UserService : IUserSevice
                 //  Mark the object to be removed
                 context.Users.Remove(userToDelete);
 
-                //  Execute the SQL DELETE statement
+                //  Execute the SQL DELETE statement                
                 context.SaveChanges();
+                Console.WriteLine("User was Delete!");
                 return true;
             }
             return false;
