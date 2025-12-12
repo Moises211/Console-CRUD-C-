@@ -1,4 +1,4 @@
-﻿public class Program
+public class Program
 {
     public static void Main(string[] args)
     {
@@ -13,7 +13,10 @@
             Console.WriteLine("2. List all users");
             Console.WriteLine("3. List all orders");
             Console.WriteLine("4. Get User By Id");
+            Console.WriteLine("5. Update User's Email");
+            Console.WriteLine("6. Delete a User");
             string switch_on = Console.ReadLine();
+            Console.Clear();
             switch (switch_on)
             {
                 case "1":
@@ -33,19 +36,33 @@
                     //List all orders
                     userService.ListOrders();
                     break;
+                    //Search user by Id
                 case "4":
                     Console.WriteLine("Enter the ID for serch");
                     id = int.Parse(Console.ReadLine());
-                    userService.GetUserById(id);
-                    break;
-                case "5":
-                    Console.WriteLine("Enter de ID of the record");
-                    id = int.Parse(Console.ReadLine());
                     var user = userService.GetUserById(id);
-                    Console.WriteLine("Email anterior: "+user.UserEmail);
-                    
+                    Console.WriteLine($"{user.UserName} <--> {user.UserEmail}");
+                    break;
+                    //Update a Email user
+                case "5":
+                    Console.WriteLine("Enter record's ID");
+                    id = int.Parse(Console.ReadLine());
+                     user = userService.GetUserById(id);
+                    Console.WriteLine("Now Email: " + user.UserEmail + "\nEnter new Email");
+                    string email = Console.ReadLine();
+                    userService.UpdateUserEmail(id, email);
+                    break;
+                    //Delete a user
+                case "6":
+                    Console.WriteLine("Enter record's ID");
+                    id = int.Parse(Console.ReadLine());
+                    user = userService.GetUserById(id);
+                    Console.WriteLine("UserData:" + user + "\n Deleted? : Y");
+                    if (Console.ReadLine().ToUpper() == "Y")
+                        userService.DeleteUser(id);
                     break;
                 default:
+                
                     option = false;
                     break;
             }
